@@ -20,8 +20,17 @@ function UserList() {
             </div>
         ))
       }
+
+<h1> User List page with URL </h1>
+      {
+        userData.map((item , index)=>(
+            <div key={index} >
+               <h5> <Link to={"/users/"+item.id+"/"+item.name}> {item.name} </Link></h5>
+            </div>
+        ))
+      }
     </div>
-  )
+  );
 }
 
 export default UserList;

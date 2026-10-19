@@ -8,23 +8,30 @@ import College from "./College";
 import Student from "./Student";
 import Department from "./Department";
 import Details from "./Details";
+import UserList from "./UserList";
+import UserDetail from "./UserDetails";
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
+          <Route element={<Navbar />} >
+            <Route path="/" element={<Home />} />
+            <Route path="/user/about" element={<About />} />
+            <Route path="/user/login" element={<Login />} />
+            <Route path="/users" element={<UserList />} />
+            <Route path="/users/:id" element={<UserDetail />} />
+          </Route>
 
-        <Route path="/college" element={<College />} >
-             <Route path="student" element={<Student />} />
+           <Route path="/college" element={<College />} >
+             <Route index element={<Student />} />
              <Route path="department" element={<Department />} />
              <Route path="details" element={<Details/>} />
-        </Route>
 
-        {/* <Route  path="*" element={<PageNoteFound />} /> */}
-        <Route path="*" element={<Navigate to="/Home" />} />
+           </Route>
+
+               <Route  path="/*" element={<PageNoteFound />} />
+             {/* <Route path="*" element={<Navigate to="/Home" />} /> */}
       </Routes>
     </>
   );
